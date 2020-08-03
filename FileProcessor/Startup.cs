@@ -1,3 +1,5 @@
+using AutoMapper;
+using Bll.Automapper;
 using Bll.Parsers;
 using Domain.Interfaces;
 using Domain.Models.CSV;
@@ -35,6 +37,14 @@ namespace FileProcessor
 
             var csvOptions = Configuration.GetSection("CsvOptions");
             services.Configure<CsvOptions>(csvOptions);
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new TransactionProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
