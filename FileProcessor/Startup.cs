@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Bll.Parsers;
 using Domain.Interfaces;
 using Domain.Models.CSV;
-using EF;
+using EfContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +26,7 @@ namespace FileProcessor
         {
             var conStr = Configuration.GetConnectionString("TransactionsDb");
 
-            services.AddDbContext<FileProcessorContext>(options =>
+            services.AddDbContext<TransactionContext>(options =>
             {
                 options.UseSqlServer(conStr);
             });
