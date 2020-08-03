@@ -3,9 +3,14 @@ using System;
 
 namespace Bll.Parsers
 {
-    public class FileParserFactory
+    public class FileParserFactory : IFileParserFactory
     {
-        public static IFileParser GetParser(string fileExtension)
+        private IServiceProvider _serviceProvider;
+        public FileParserFactory(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+        public IFileParser GetParser(string fileExtension)
         {
             if (string.IsNullOrEmpty(fileExtension))
             {
@@ -16,7 +21,7 @@ namespace Bll.Parsers
 
             switch (fileExtension) {
                 case ".csv":
-                    return new CsvParser();
+                    return (CsvParser)_serviceProvider.GetService(typeof(CsvParser));
                 case ".xml":
                     return new XmlParser();
                 default:

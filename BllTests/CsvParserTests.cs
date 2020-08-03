@@ -1,14 +1,26 @@
 using Bll.Helpers;
 using Bll.Parsers;
+using Domain.Models.CSV;
+using Microsoft.Extensions.Options;
+using Moq;
 using NUnit.Framework;
 
 namespace BllTests
 {
     public class CsvParserTests
     {
+        private Mock<IOptions<CsvOptions>> _csvOptionsMock;
+
         [SetUp]
         public void Setup()
         {
+            _csvOptionsMock = new Mock<IOptions<CsvOptions>>();
+
+            _csvOptionsMock.Setup(csv => csv.Value).Returns(new CsvOptions
+            {
+                Delimiter = ",",
+                SkipHeader = true
+            });
         }
 
         [Test]
@@ -19,7 +31,7 @@ namespace BllTests
 
             using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
             {
-                var csvParser = new CsvParser();
+                var csvParser = new CsvParser(_csvOptionsMock.Object);
                 csvParser.ParseFile(stream);
                 Assert.Pass();
             }

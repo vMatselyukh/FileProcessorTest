@@ -7,9 +7,14 @@ namespace Bll.Managers
 {
     public class FileManager : IFileManager
     {
+        private IFileParserFactory _fileParserFactory;
+        public FileManager(IFileParserFactory fileParserFactory)
+        {
+            _fileParserFactory = fileParserFactory;
+        }
         public FileProcessResult ProcessFile(FileStream fileContent, string fileExtension)
         {
-            var parser = FileParserFactory.GetParser(fileExtension);
+            var parser = _fileParserFactory.GetParser(fileExtension);
             var parseResult = parser.ParseFile(fileContent);
 
             if (parseResult.IsSucceed)

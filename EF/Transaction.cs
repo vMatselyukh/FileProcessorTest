@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Models
+namespace EF
 {
     public class Transaction
     {
@@ -8,6 +8,6 @@ namespace Domain.Models
         public decimal Amount { get; set; }
         public string Currency { get; set; }
         public DateTime Date { get; set; }
-        public TransactionStatusEnum Status { get; set; }
+        public int Status { get; set; }
     }
 }
