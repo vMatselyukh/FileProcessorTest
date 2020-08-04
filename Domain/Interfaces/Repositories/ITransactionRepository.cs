@@ -9,7 +9,7 @@ namespace Domain.Interfaces.Repositories
     public interface ITransactionRepository
     {
         List<Transaction> GetAll();
-        Task InsertList(List<Transaction> transactions);
+        Task InsertListAsync(List<Transaction> transactions);
         List<Transaction> GetByStatus(TransactionStatusEnum status);
         List<Transaction> GetByDateRange(DateTime beginDate, DateTime endDate);
         List<Transaction> GetByCurrency(CurrencyEnum currency);

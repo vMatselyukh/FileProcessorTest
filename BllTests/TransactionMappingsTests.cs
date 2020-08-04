@@ -20,7 +20,7 @@ namespace BllTests
         }
 
         [Test]
-        public void TransactionTransactionEfBackAndForthSucceed()
+        public void TransactionTransactionEfBackAndForth_Succeed()
         {
             var transactionDate = DateTime.Now;
 

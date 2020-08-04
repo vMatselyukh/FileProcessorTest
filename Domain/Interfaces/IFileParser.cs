@@ -5,6 +5,6 @@ namespace Domain.Interfaces
 {
     public interface IFileParser
     {
-        FileParseResult ParseFile(Stream fileStream);
+        FileParseResult ParseFile(Stream content);
     }
 }

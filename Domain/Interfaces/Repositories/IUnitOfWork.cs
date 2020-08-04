@@ -6,6 +6,7 @@ namespace Domain.Interfaces.Repositories
     public interface IUnitOfWork : IDisposable
     {
         ITransactionRepository TransactionRepository { get; }
-        Task Save();
+        Task SaveAsync();
+        Task SaveWithTransactionAsync();
     }
 }

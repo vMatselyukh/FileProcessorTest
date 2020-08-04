@@ -37,7 +37,7 @@ namespace Dal.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task InsertList(List<Transaction> transactions)
+        public async Task InsertListAsync(List<Transaction> transactions)
         {
             await _dbContext.Transactions.AddRangeAsync(transactions);
         }

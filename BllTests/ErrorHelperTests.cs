@@ -6,7 +6,7 @@ namespace BllTests
     public class ErrorHelperTests
     {
         [Test]
-        public void TestGetErrorMessageSucceed()
+        public void TestGetErrorMessage_Succeed()
         {
             var errorHelper = new ErrorMessageHelper();
             var testMessage1 = "this is a first test message";

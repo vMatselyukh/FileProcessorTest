@@ -1,10 +1,11 @@
 ﻿using Domain.Models;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
     public interface IFileManager
     {
-        FileProcessResult ProcessFile(FileStream fileContent, string fileExtension);
+        Task<FileProcessResult> ProcessFileAsync(Stream content, string fileExtension);
     }
 }
