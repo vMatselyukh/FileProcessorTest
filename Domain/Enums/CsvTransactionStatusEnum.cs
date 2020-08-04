@@ -1,4 +1,4 @@
-﻿namespace Domain.Models.CSV
+﻿namespace Domain.Enums
 {
     public enum CsvTransactionStatusEnum
     {

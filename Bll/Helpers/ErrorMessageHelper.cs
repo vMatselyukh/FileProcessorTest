@@ -8,7 +8,7 @@ namespace Bll.Helpers
     /// Don't reused old instance because of accumulation of error
     /// messages
     /// </summary>
-    public class ErrorMessageHelper : IMessageErrorHelper
+    public class ErrorMessageHelper : IErrorMessageHelper
     {
         private StringBuilder _stringBuilder;
 

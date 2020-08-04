@@ -38,7 +38,7 @@ namespace FileProcessor
             });
 
             services.AddScoped<IFileParserFactory, FileParserFactory>();
-            services.AddScoped<IMessageErrorHelper, ErrorMessageHelper>();
+            services.AddScoped<IErrorMessageHelper, ErrorMessageHelper>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             var csvOptions = Configuration.GetSection("CsvOptions");

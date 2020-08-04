@@ -3,8 +3,6 @@ using Bll.Automapper;
 using Bll.Helpers;
 using Bll.Parsers;
 using Domain.Models.CSV;
-using log4net.Core;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
@@ -17,7 +15,7 @@ namespace BllTests
         private Mock<IOptions<CsvOptions>> _csvOptionsMock;
         private Mock<IServiceProvider> _serviceProviderMock;
 
-        private IMapper _mapper;
+        private IMapper _automapper;
         
 
         [SetUp]
@@ -34,18 +32,18 @@ namespace BllTests
 
             var transactionProfile = new TransactionProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(transactionProfile));
-            _mapper = new Mapper(configuration);
+            _automapper = new Mapper(configuration);
         }
 
         [Test]
-        public void TestParse_Succeed()
+        public void ParseFile_Succeed()
         {
             var fileContent = "Invoice0000001, \"1,000.00\", USD, 20/02/2019 12:33:16, Approved\n" +
                                    "Invoice0000002, 300.00, USD, 21/02/2019 02:04:59, Failed";
 
             using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
             {
-                var csvParser = new CsvParser(_csvOptionsMock.Object, _mapper, _serviceProviderMock.Object);
+                var csvParser = new CsvParser(_csvOptionsMock.Object, _automapper, _serviceProviderMock.Object);
                 var parseResult = csvParser.ParseFile(stream);
 
                 Assert.IsTrue(parseResult.IsSucceed);
@@ -55,7 +53,7 @@ namespace BllTests
         }
 
         [Test]
-        public void TestParse_Failed_MissingMember()
+        public void ParseFile_Failed_MissingMember()
         {
             var fileContent = "Invoice0000001, USD, 20/02/2019 12:33:16, Approved\n" +
                                    "Invoice0000002, 300.00, USD, 21/02/2019 02:04:59, Failed";
@@ -65,7 +63,7 @@ namespace BllTests
 
             using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
             {
-                var csvParser = new CsvParser(_csvOptionsMock.Object, _mapper, _serviceProviderMock.Object);
+                var csvParser = new CsvParser(_csvOptionsMock.Object, _automapper, _serviceProviderMock.Object);
                 csvParser.ParseFile(stream);
                 Assert.Pass();
             }

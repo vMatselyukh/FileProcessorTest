@@ -23,7 +23,7 @@ namespace Bll.Parsers
                 case ".csv":
                     return (CsvParser)_serviceProvider.GetService(typeof(CsvParser));
                 case ".xml":
-                    return new XmlParser();
+                    return (XmlParser)_serviceProvider.GetService(typeof(XmlParser));
                 default:
                     throw new FormatException("Unknown file format");
             }

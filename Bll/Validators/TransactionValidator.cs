@@ -12,10 +12,10 @@ namespace Bll.Validators
     public class TransactionValidator : ITransactionValidator
     {
         private ValidationRules _validationRules;
-        private IMessageErrorHelper _errorMessageHelper;
+        private IErrorMessageHelper _errorMessageHelper;
         private IServiceProvider _serviceProvider;
 
-        public TransactionValidator(IOptions<ValidationRules> validationRules, IMessageErrorHelper errorMessageHelper,
+        public TransactionValidator(IOptions<ValidationRules> validationRules, IErrorMessageHelper errorMessageHelper,
             IServiceProvider serviceProvider)
         {
             _validationRules = validationRules.Value;

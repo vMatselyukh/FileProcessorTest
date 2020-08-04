@@ -2,6 +2,7 @@
 using Domain.Enums;
 using Domain.Models;
 using Domain.Models.CSV;
+using Domain.Models.XML;
 
 namespace Bll.Automapper
 {
@@ -26,7 +27,24 @@ namespace Bll.Automapper
                             break;
                     }
                 });
-            CreateMap<Transaction, CsvTransaction>();
+
+            //xml transaction <-> common transaction
+            CreateMap<XmlTransaction, Transaction>()
+                .ForMember(d => d.Currency, opt => opt.MapFrom(s => s.CurrencyCode.ToString()))
+                .AfterMap((src, dest) => {
+                    switch (src.Status)
+                    {
+                        case XmlTransactionStatusEnum.Approved:
+                            dest.Status = TransactionStatusEnum.A;
+                            break;
+                        case XmlTransactionStatusEnum.Rejected:
+                            dest.Status = TransactionStatusEnum.R;
+                            break;
+                        case XmlTransactionStatusEnum.Done:
+                            dest.Status = TransactionStatusEnum.D;
+                            break;
+                    }
+                });
 
             //common transaction <-> ef transaction
             CreateMap<Transaction, EfContext.Transaction>();
