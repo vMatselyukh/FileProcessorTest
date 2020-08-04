@@ -1,4 +1,5 @@
-﻿using Domain.Models.CSV;
+﻿using Domain.Enums;
+using Domain.Models.CSV;
 using TinyCsvParser.Mapping;
 using TinyCsvParser.TypeConverter;
 
@@ -11,7 +12,7 @@ namespace Bll.CSV
         {
             MapProperty(0, x => x.TransactionId);
             MapProperty(1, x => x.Amount);
-            MapProperty(2, x => x.Currency);
+            MapProperty(2, x => x.Currency, new EnumConverter<CurrencyEnum>());
             MapProperty(3, x => x.Date, new DateTimeConverter("dd/MM/yyyy hh:mm:ss"));
             MapProperty(4, x => x.Status, new EnumConverter<CsvTransactionStatusEnum>());
         }

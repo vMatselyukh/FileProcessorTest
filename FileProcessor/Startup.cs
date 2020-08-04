@@ -2,7 +2,9 @@ using AutoMapper;
 using Bll.Automapper;
 using Bll.Helpers;
 using Bll.Parsers;
+using Dal.Repositories;
 using Domain.Interfaces;
+using Domain.Interfaces.Repositories;
 using Domain.Models.CSV;
 using EfContext;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +38,7 @@ namespace FileProcessor
 
             services.AddScoped<IFileParserFactory, FileParserFactory>();
             services.AddScoped<IErrorHelper, ErrorHelper>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             var csvOptions = Configuration.GetSection("CsvOptions");
             services.Configure<CsvOptions>(csvOptions);

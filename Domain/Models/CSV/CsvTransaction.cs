@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enums;
+using System;
 
 namespace Domain.Models.CSV
 {
@@ -7,7 +8,7 @@ namespace Domain.Models.CSV
         public string TransactionId { get; set; }
 
         public decimal Amount { get; set; }
-        public string Currency { get; set; }
+        public CurrencyEnum Currency { get; set; }
 
         public DateTime Date { get; set; }
         public CsvTransactionStatusEnum Status { get; set; }

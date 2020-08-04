@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain;
+using Domain.Enums;
 using Domain.Models;
 using Domain.Models.CSV;
 
@@ -9,7 +9,9 @@ namespace Bll.Automapper
     {
         public TransactionProfile()
         {
+            //csv transaction <-> common transaction
             CreateMap<CsvTransaction, Transaction>()
+                .ForMember(d => d.Currency, opt => opt.MapFrom(s => s.Currency.ToString()))
                 .AfterMap((src, dest) => {
                     switch (src.Status)
                     {
@@ -24,8 +26,11 @@ namespace Bll.Automapper
                             break;
                     }
                 });
-           
             CreateMap<Transaction, CsvTransaction>();
+
+            //common transaction <-> ef transaction
+            CreateMap<Transaction, EfContext.Transaction>();
+            CreateMap<EfContext.Transaction, Transaction>();
         }
     }
 }
