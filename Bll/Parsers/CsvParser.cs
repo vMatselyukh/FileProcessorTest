@@ -20,15 +20,13 @@ namespace Bll.Parsers
         private readonly CsvOptions _csvOptions;
         private readonly IMapper _mapper;
         private readonly IServiceProvider _serviceProvider;
-        private readonly ILogger<CsvParser> _logger;
 
         public CsvParser(IOptions<CsvOptions> csvOptions, IMapper mapper,
-            IServiceProvider serviceProvider, ILogger<CsvParser> logger)
+            IServiceProvider serviceProvider)
         {
             _csvOptions = csvOptions.Value;
             _mapper = mapper;
             _serviceProvider = serviceProvider;
-            _logger = logger;
         }
         public FileParseResult ParseFile(Stream stream)
         {
@@ -46,7 +44,7 @@ namespace Bll.Parsers
             {
                 isSucceed = false;
 
-                var errorHelper = (ErrorHelper)_serviceProvider.GetService(typeof(ErrorHelper));
+                var errorHelper = (ErrorMessageHelper)_serviceProvider.GetService(typeof(ErrorMessageHelper));
 
                 foreach (var failureRow in tinyParserResult.Where(row => !row.IsValid))
                 {
@@ -55,13 +53,11 @@ namespace Bll.Parsers
                 }
 
                 errorMessage = errorHelper.GetErrorMessage();
-                _logger.LogWarning("Errors occured during CSV file parsing. Details: ", errorMessage);
             }
             else
             {
                 transactionList = _mapper.Map<List<CsvTransaction>, List<Transaction>>(
-                    tinyParserResult.Select(row => row.Result).ToList()
-                    );
+                    tinyParserResult.Select(row => row.Result).ToList());
             }
 
             return new FileParseResult

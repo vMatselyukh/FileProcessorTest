@@ -8,7 +8,7 @@ namespace BllTests
         [Test]
         public void TestGetErrorMessageSucceed()
         {
-            var errorHelper = new ErrorHelper();
+            var errorHelper = new ErrorMessageHelper();
             var testMessage1 = "this is a first test message";
             var testMessage2 = "this is a second test message";
 

@@ -1,6 +1,6 @@
 ﻿namespace Domain.Interfaces
 {
-    public interface IErrorHelper
+    public interface IMessageErrorHelper
     {
         void AppendErrorMessage(string message);
         string GetErrorMessage();

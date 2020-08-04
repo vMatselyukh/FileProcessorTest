@@ -8,11 +8,11 @@ namespace Bll.Helpers
     /// Don't reused old instance because of accumulation of error
     /// messages
     /// </summary>
-    public class ErrorHelper : IErrorHelper
+    public class ErrorMessageHelper : IMessageErrorHelper
     {
         private StringBuilder _stringBuilder;
 
-        public ErrorHelper()
+        public ErrorMessageHelper()
         {
             _stringBuilder = new StringBuilder();
         }

@@ -63,8 +63,8 @@ namespace BllTests
             var fileContent = "Invoice0000001, USD, 20/02/2019 12:33:16, Approved\n" +
                                    "Invoice0000002, 300.00, USD, 21/02/2019 02:04:59, Failed";
 
-            _serviceProviderMock.Setup(provider => provider.GetService(typeof(ErrorHelper)))
-                .Returns(new ErrorHelper());
+            _serviceProviderMock.Setup(provider => provider.GetService(typeof(ErrorMessageHelper)))
+                .Returns(new ErrorMessageHelper());
 
             using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
             {

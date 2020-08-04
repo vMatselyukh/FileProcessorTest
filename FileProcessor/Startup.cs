@@ -6,6 +6,7 @@ using Dal.Repositories;
 using Domain.Interfaces;
 using Domain.Interfaces.Repositories;
 using Domain.Models.CSV;
+using Domain.Models.Validation;
 using EfContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,11 +38,14 @@ namespace FileProcessor
             });
 
             services.AddScoped<IFileParserFactory, FileParserFactory>();
-            services.AddScoped<IErrorHelper, ErrorHelper>();
+            services.AddScoped<IMessageErrorHelper, ErrorMessageHelper>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             var csvOptions = Configuration.GetSection("CsvOptions");
             services.Configure<CsvOptions>(csvOptions);
+
+            var validationRules = Configuration.GetSection("ValidationRules");
+            services.Configure<ValidationRules>(validationRules);
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
