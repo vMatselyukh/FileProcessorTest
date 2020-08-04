@@ -1,5 +1,6 @@
 using AutoMapper;
 using Bll.Automapper;
+using Bll.Helpers;
 using Bll.Parsers;
 using Domain.Interfaces;
 using Domain.Models.CSV;
@@ -34,6 +35,7 @@ namespace FileProcessor
             });
 
             services.AddScoped<IFileParserFactory, FileParserFactory>();
+            services.AddScoped<IErrorHelper, ErrorHelper>();
 
             var csvOptions = Configuration.GetSection("CsvOptions");
             services.Configure<CsvOptions>(csvOptions);
