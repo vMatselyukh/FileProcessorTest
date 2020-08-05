@@ -45,15 +45,6 @@
 
         var xhr = new XMLHttpRequest();
         
-        xhr.addEventListener('progress', function (e) {
-            console.log('xhr progress...');
-        }, false);
-
-        if (xhr.upload) {
-            xhr.upload.onprogress = function (e) {
-                console.log('xhr.upload progress...');
-            };
-        }
         xhr.onreadystatechange = function (e) {
             if (4 === this.readyState) {
                 if (e.target.status === 200)
@@ -90,11 +81,41 @@
         }
     },
 
+    turnDragAndDropOn: function () {
+        let dropArea = document.querySelector('body');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, function () {
+                dropArea.classList.add('highlight');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, function () {
+                dropArea.classList.remove('highlight');
+            }, false);
+        });
+
+        dropArea.addEventListener('drop', function (e) {
+            let dt = e.dataTransfer;
+            document.getElementById("FileInput").files = dt.files;
+        }, false);
+    },
+
     domReady: function () {
         var self = this;
         document.getElementById("SumbitButton").addEventListener("click", function (e) {
             self.addSubmitButtonHandler();
         });
+
+        this.turnDragAndDropOn();
     }
 };
 

@@ -7,12 +7,14 @@ using Bll.Validators;
 using Dal.Repositories;
 using Dal.Services;
 using Domain.Interfaces;
+using Domain.Interfaces.Managers;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Interfaces.Validators;
 using Domain.Models.CSV;
 using Domain.Models.Validation;
 using EfContext;
+using FileProcessor.ModelBinders;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -49,6 +51,8 @@ namespace FileProcessor
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<ITransactionValidator, TransactionValidator>();
             services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<ITransactionManager, TransactionManager>();
+            
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IFileManager, FileManager>();
 
@@ -71,6 +75,11 @@ namespace FileProcessor
             services.AddSingleton(mapper);
 
             services.AddControllersWithViews();
+
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

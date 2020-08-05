@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Models.Api;
 using Domain.Models.CSV;
 using Domain.Models.XML;
 
@@ -10,7 +11,7 @@ namespace Bll.Automapper
     {
         public TransactionProfile()
         {
-            //csv transaction <-> common transaction
+            //csv transaction -> common transaction
             CreateMap<CsvTransaction, Transaction>()
                 .ForMember(d => d.Currency, opt => opt.MapFrom(s => s.Currency.ToString()))
                 .AfterMap((src, dest) => {
@@ -28,7 +29,7 @@ namespace Bll.Automapper
                     }
                 });
 
-            //xml transaction <-> common transaction
+            //xml transaction -> common transaction
             CreateMap<XmlTransaction, Transaction>()
                 .ForMember(d => d.Currency, opt => opt.MapFrom(s => s.CurrencyCode.ToString()))
                 .AfterMap((src, dest) => {
@@ -49,6 +50,10 @@ namespace Bll.Automapper
             //common transaction <-> ef transaction
             CreateMap<Transaction, EfContext.Transaction>();
             CreateMap<EfContext.Transaction, Transaction>();
+
+            //common transaction -> api transaction
+            CreateMap<EfContext.Transaction, ApiTransaction>()
+                .ForMember(d => d.Payment, opt => opt.MapFrom(s => $"{s.Amount.ToString("0.00")} {s.Currency}"));
         }
     }
 }

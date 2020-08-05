@@ -4,6 +4,7 @@ using Domain.Interfaces.Services;
 using Domain.Interfaces.Validators;
 using Domain.Models;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -28,11 +29,26 @@ namespace Bll.Managers
         public async Task<FileProcessResult> ProcessFileAsync(string content, string fileExtension)
         {
             var parser = _fileParserFactory.GetParser(fileExtension);
-            var parseResult = parser.ParseFile(content);
+            FileParseResult parseResult;
+            try
+            {
+                parseResult = parser.ParseFile(content);
+            }
+            catch (Exception e)
+            {
+                var errorMessage = "Exception happened while parsing the document. Your file may be broken.";
+                _logger.LogError(e, errorMessage);
+
+                return new FileProcessResult
+                {
+                    IsSucceed = false,
+                    ErrorMessage = errorMessage
+                };
+            }
 
             if (!parseResult.IsSucceed)
             {
-                _logger.LogWarning("Errors occured during CSV file parsing. Details: ", parseResult.ErrorMessage);
+                _logger.LogWarning($"Errors occured during CSV file parsing. Details: {parseResult.ErrorMessage}");
 
                 return new FileProcessResult
                 {

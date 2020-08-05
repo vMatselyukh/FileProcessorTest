@@ -24,17 +24,17 @@ namespace Dal.Repositories
 
         public List<Transaction> GetByCurrency(CurrencyEnum currency)
         {
-            throw new NotImplementedException();
+            return _dbContext.Transactions.Where(t => t.Currency == currency.ToString()).ToList();
         }
 
         public List<Transaction> GetByDateRange(DateTime beginDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            return _dbContext.Transactions.Where(t => t.Date >= beginDate && t.Date <= endDate).ToList();
         }
 
         public List<Transaction> GetByStatus(TransactionStatusEnum status)
         {
-            throw new NotImplementedException();
+            return _dbContext.Transactions.Where(t => t.Status == (int)status).ToList();
         }
 
         public async Task InsertListAsync(List<Transaction> transactions)
