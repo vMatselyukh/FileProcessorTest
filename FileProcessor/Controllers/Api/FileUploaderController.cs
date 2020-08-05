@@ -52,7 +52,7 @@ namespace FileProcessor.Controllers.Api
             }
             catch (FormatException)
             {
-                return BadRequest(new { Error = "File format is incorrect" });
+                return BadRequest(new { Error = "Unknown format" });
             }
         }
     }

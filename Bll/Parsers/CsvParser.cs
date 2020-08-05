@@ -18,15 +18,12 @@ namespace Bll.Parsers
     public class CsvParser : IFileParser
     {
         private readonly CsvOptions _csvOptions;
-        private readonly IMapper _mapper;
-        private readonly IServiceProvider _serviceProvider;
+        private readonly IMapper _mapper;        
 
-        public CsvParser(IOptions<CsvOptions> csvOptions, IMapper mapper,
-            IServiceProvider serviceProvider)
+        public CsvParser(IOptions<CsvOptions> csvOptions, IMapper mapper)
         {
             _csvOptions = csvOptions.Value;
             _mapper = mapper;
-            _serviceProvider = serviceProvider;
         }
         public FileParseResult ParseFile(string content)
         {
