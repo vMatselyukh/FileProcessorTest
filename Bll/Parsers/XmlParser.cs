@@ -114,7 +114,7 @@ namespace Bll.Parsers
                         Amount = transactionAmount,
                         TransactionId = elementsQuery.ElementAt(i).Id,
                         CurrencyCode = currencyCode,
-                        TransactionDate = transactionDate,
+                        Date = transactionDate,
                         Status = transactionStatus
                     });
                 }

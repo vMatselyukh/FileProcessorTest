@@ -26,11 +26,13 @@ namespace FileProcessor.Controllers.Api
 
         [Route("uploadfile")]
         [HttpPost]
-        public async Task<ActionResult> UploadFile([FromForm(Name = "File")] IFormFile file)
+        public async Task<ActionResult> UploadFile()
         {
+            var file = Request.Form.Files[0];
+
             if (file.Length > BYTES_IN_MEGABYTE)
             {
-                return BadRequest("Uploaded file is too big. Max is 1 Mb");
+                return BadRequest(new { Error = "Uploaded file is too big. Max is 1 Mb" });
             }            
 
             try
@@ -41,16 +43,16 @@ namespace FileProcessor.Controllers.Api
 
                 if (fileProcessResult.IsSucceed)
                 {
-                    return Ok(new { ProcessedTransactions = fileProcessResult.ProcessedTransactions });
+                    return Ok(new { fileProcessResult.ProcessedTransactions });
                 }
                 else
                 {
-                    return BadRequest(new { ErrorMessage = fileProcessResult.ErrorMessage });
+                    return BadRequest(new { Error = fileProcessResult.ErrorMessage });
                 }
             }
             catch (FormatException)
             {
-                return BadRequest("File format is incorrect");
+                return BadRequest(new { Error = "File format is incorrect" });
             }
         }
     }

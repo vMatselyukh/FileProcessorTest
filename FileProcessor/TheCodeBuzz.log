@@ -209,4 +209,182 @@
  2020-08-05 10:06:01,215  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
  2020-08-05 10:06:01,228  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
  2020-08-05 10:06:01,229  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 10:16:35,562  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 10:16:35,572  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 10:16:35,573  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 10:24:27,252 ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.? [?] - MESSAGE: An unhandled exception has occurred while executing the request.
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at FileProcessor.Controllers.Api.FileUploaderController.UploadFile(IFormFile file) in D:\Projects\Test\FileProcessorTest\FileProcessor\Controllers\Api\FileUploaderController.cs:line 31
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-08-05 10:24:48,545  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 10:24:48,556  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 10:24:48,558  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 10:24:50,752 ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.? [?] - MESSAGE: An unhandled exception has occurred while executing the request.
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at FileProcessor.Controllers.Api.FileUploaderController.UploadFile(IFormFile file) in D:\Projects\Test\FileProcessorTest\FileProcessor\Controllers\Api\FileUploaderController.cs:line 31
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-08-05 10:27:34,054  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 10:27:34,064  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 10:27:34,066  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 10:52:13,925  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 10:52:13,936  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 10:52:13,938  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 10:56:43,814  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 10:56:43,824  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 10:56:43,825  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 10:57:28,685  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 10:57:28,694  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 10:57:28,696  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 10:58:42,298  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 10:58:42,308  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 10:58:42,309  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:00:28,249  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:00:28,259  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:00:28,260  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:01:09,425  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:01:09,437  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:01:09,439  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:02:45,547  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:02:45,556  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:02:45,558  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:09:48,672  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:09:48,681  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:09:48,682  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:11:41,557  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:11:41,569  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:11:41,571  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:11:49,702 ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.? [?] - MESSAGE: An unhandled exception has occurred while executing the request.
+ System.IO.InvalidDataException: Missing content-type boundary.
+   at Microsoft.AspNetCore.Http.Features.FormFeature.GetBoundary(MediaTypeHeaderValue contentType, Int32 lengthLimit)
+   at Microsoft.AspNetCore.Http.Features.FormFeature.InnerReadFormAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at FileProcessor.Controllers.Api.FileUploaderController.UploadFile() in D:\Projects\Test\FileProcessorTest\FileProcessor\Controllers\Api\FileUploaderController.cs:line 31
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-08-05 11:14:40,913  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:14:40,923  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:14:40,925  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:14:47,608 ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.? [?] - MESSAGE: An unhandled exception has occurred while executing the request.
+ System.IO.InvalidDataException: Missing content-type boundary.
+   at Microsoft.AspNetCore.Http.Features.FormFeature.GetBoundary(MediaTypeHeaderValue contentType, Int32 lengthLimit)
+   at Microsoft.AspNetCore.Http.Features.FormFeature.InnerReadFormAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at FileProcessor.Controllers.Api.FileUploaderController.UploadFile() in D:\Projects\Test\FileProcessorTest\FileProcessor\Controllers\Api\FileUploaderController.cs:line 31
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-08-05 11:15:11,869  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:15:11,879  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:15:11,881  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:17:37,581 ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.? [?] - MESSAGE: An unhandled exception has occurred while executing the request.
+ System.IO.InvalidDataException: Missing content-type boundary.
+   at Microsoft.AspNetCore.Http.Features.FormFeature.GetBoundary(MediaTypeHeaderValue contentType, Int32 lengthLimit)
+   at Microsoft.AspNetCore.Http.Features.FormFeature.InnerReadFormAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Features.FormFeature.ReadForm()
+   at Microsoft.AspNetCore.Http.DefaultHttpRequest.get_Form()
+   at FileProcessor.Controllers.Api.FileUploaderController.UploadFile() in D:\Projects\Test\FileProcessorTest\FileProcessor\Controllers\Api\FileUploaderController.cs:line 31
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-08-05 11:19:26,141  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:19:26,151  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:19:26,152  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:22:53,864  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:22:53,877  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:22:53,879  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:29:56,323  WARN Bll.Managers.FileManager.? [?] - MESSAGE: Errors occured during CSV file parsing. Details: 
+ 2020-08-05 11:33:38,653  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:33:38,662  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:33:38,664  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:33:53,774  WARN Bll.Managers.FileManager.? [?] - MESSAGE: Errors occured during CSV file parsing. Details: 
+ 2020-08-05 11:34:29,036  WARN Bll.Managers.FileManager.? [?] - MESSAGE: Errors occured during CSV file parsing. Details: 
+ 2020-08-05 11:34:43,706  WARN Bll.Managers.FileManager.? [?] - MESSAGE: Errors occured during CSV file parsing. Details: 
+ 2020-08-05 11:38:24,601  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:38:24,611  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:38:24,613  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:40:18,138  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:40:18,148  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:40:18,151  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
+ 2020-08-05 11:41:16,081  WARN Bll.Managers.FileManager.? [?] - MESSAGE: Errors occured during CSV file parsing. Details: 
+ 2020-08-05 11:42:22,914  WARN Bll.Managers.FileManager.? [?] - MESSAGE: Errors occured during CSV file parsing. Details: 
+ 2020-08-05 11:44:59,285  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2020-08-05 11:44:59,318  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Hosting environment: Development
+ 2020-08-05 11:44:59,323  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Content root path: D:\Projects\Test\FileProcessorTest\FileProcessor
  

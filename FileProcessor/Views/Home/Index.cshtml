@@ -7,9 +7,12 @@
 
 <p>Use input field to upload your file or just drop the file to the window.</p>
 
-<form id="FileUploadForm" action="api/fileuploader/uploadfile" method="post" enctype="multipart/form-data">
-    <input type="file" name="File" />
-    <br />
-    <input type="submit" value="Submit" />
-</form>
+
+<input id="FileInput" type="file" name="File" />
+<br />
+<input id="SumbitButton" type="button" value="Submit" />
+
+<br />
+<span id="ErrorMessage" class="message error-message"></span>
+<span id="SuccessMessage" class="message success-message"></span>
 
