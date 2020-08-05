@@ -12,10 +12,10 @@ namespace Bll.Validators
     public class TransactionValidator : ITransactionValidator
     {
         private ValidationRules _validationRules;
-        private IErrorMessageHelper _errorMessageHelper;
+        private IMessageBuilder _errorMessageHelper;
         private IServiceProvider _serviceProvider;
 
-        public TransactionValidator(IOptions<ValidationRules> validationRules, IErrorMessageHelper errorMessageHelper,
+        public TransactionValidator(IOptions<ValidationRules> validationRules, IMessageBuilder errorMessageHelper,
             IServiceProvider serviceProvider)
         {
             _validationRules = validationRules.Value;
@@ -43,7 +43,7 @@ namespace Bll.Validators
 
         public ValidationResult ValidateTransactions(List<Transaction> transactions)
         {
-            var errorMessageHelper = (ErrorMessageHelper)_serviceProvider.GetService(typeof(ErrorMessageHelper));
+            var messageBuilder = (MessageBuilder)_serviceProvider.GetService(typeof(MessageBuilder));
 
             var isSucceed = true;
 
@@ -52,14 +52,14 @@ namespace Bll.Validators
                 var result = ValidateTransaction(transaction);
                 if (!result.IsSucceed)
                 {
-                    errorMessageHelper.AppendErrorMessage(result.ErrorMessage);
+                    messageBuilder.AppendMessage(result.ErrorMessage);
                     isSucceed = false;
                 }
             }
 
             return new ValidationResult
             {
-                ErrorMessage = errorMessageHelper.GetErrorMessage(),
+                ErrorMessage = messageBuilder.GetMessage(),
                 IsSucceed = isSucceed
             };
         }

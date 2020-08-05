@@ -6,6 +6,6 @@ namespace Domain.Interfaces
 {
     public interface IFileManager
     {
-        Task<FileProcessResult> ProcessFileAsync(Stream content, string fileExtension);
+        Task<FileProcessResult> ProcessFileAsync(string content, string fileExtension);
     }
 }

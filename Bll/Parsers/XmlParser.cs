@@ -21,12 +21,12 @@ namespace Bll.Parsers
             _serviceProvider = serviceProvider;
             _automapper = automapper;
         }
-        public FileParseResult ParseFile(Stream stream)
+        public FileParseResult ParseFile(string content)
         {
             string errorMessage = string.Empty;
             var transactionList = new List<XmlTransaction>();
 
-            XDocument xdoc = XDocument.Load(stream);
+            XDocument xdoc = XDocument.Load(new StringReader(content));
 
             var elementsQuery = from xel in xdoc.Element("Transactions").Elements("Transaction")
                                 select new
@@ -41,20 +41,20 @@ namespace Bll.Parsers
                                     }
                                 };
 
-            var errorMessageHelper = (ErrorMessageHelper)_serviceProvider.GetService(typeof(ErrorMessageHelper));
-            bool isSucceed = TryParseXml(elementsQuery, errorMessageHelper, transactionList);
+            var messageBuilder = (MessageBuilder)_serviceProvider.GetService(typeof(MessageBuilder));
+            bool isSucceed = TryParseXml(elementsQuery, messageBuilder, transactionList);
 
 
             return new FileParseResult
             {
                 IsSucceed = isSucceed,
-                ErrorMessage = errorMessageHelper.GetErrorMessage(),
+                ErrorMessage = messageBuilder.GetMessage(),
                 TransactionList = isSucceed ? _automapper.Map<List<Transaction>>(transactionList) 
                     : new List<Transaction>()
             };
         }
 
-        private bool TryParseXml(IEnumerable<dynamic> elementsQuery, ErrorMessageHelper errorMessageHelper, 
+        private bool TryParseXml(IEnumerable<dynamic> elementsQuery, MessageBuilder errorMessageHelper, 
             List<XmlTransaction> transactionList)
         {
             bool isSucceed = true;
@@ -67,27 +67,27 @@ namespace Bll.Parsers
             {
                 if (elementsQuery.ElementAt(i).Id == null)
                 {
-                    errorMessageHelper.AppendErrorMessage($"Transaction Id of #{i} transaction is empty.");
+                    errorMessageHelper.AppendMessage($"Transaction Id of #{i} transaction is empty.");
                     isSucceed = false;
                 }
 
                 if (elementsQuery.ElementAt(i).Status == null
                     || !Enum.TryParse(elementsQuery.ElementAt(i).Status, out transactionStatus))
                 {
-                    errorMessageHelper.AppendErrorMessage($"Transaction Status of #{i} transaction is empty or has bad format.");
+                    errorMessageHelper.AppendMessage($"Transaction Status of #{i} transaction is empty or has bad format.");
                     isSucceed = false;
                 }
 
                 if (elementsQuery.ElementAt(i).TransactionDate == null
                     || !DateTime.TryParse(elementsQuery.ElementAt(i).TransactionDate, out transactionDate))
                 {
-                    errorMessageHelper.AppendErrorMessage($"Transaction Date of #{i} transaction is empty or has bad format.");
+                    errorMessageHelper.AppendMessage($"Transaction Date of #{i} transaction is empty or has bad format.");
                     isSucceed = false;
                 }
 
                 if (elementsQuery.ElementAt(i).PaymentDetails == null)
                 {
-                    errorMessageHelper.AppendErrorMessage($"Transaction PaymentDetails of #{i} transaction is empty.");
+                    errorMessageHelper.AppendMessage($"Transaction PaymentDetails of #{i} transaction is empty.");
                     isSucceed = false;
                 }
                 else
@@ -95,14 +95,14 @@ namespace Bll.Parsers
                     if (elementsQuery.ElementAt(i).PaymentDetails.Amount == null
                         || !decimal.TryParse(elementsQuery.ElementAt(i).PaymentDetails.Amount, out transactionAmount))
                     {
-                        errorMessageHelper.AppendErrorMessage($"Transaction Amount of #{i} transaction is empty or has bad format.");
+                        errorMessageHelper.AppendMessage($"Transaction Amount of #{i} transaction is empty or has bad format.");
                         isSucceed = false;
                     }
 
                     if (elementsQuery.ElementAt(i).PaymentDetails.CurrencyCode == null
                         || !Enum.TryParse(elementsQuery.ElementAt(i).PaymentDetails.CurrencyCode, out currencyCode))
                     {
-                        errorMessageHelper.AppendErrorMessage($"Transaction CurrencyCode of #{i} transaction is empty or has bad format.");
+                        errorMessageHelper.AppendMessage($"Transaction CurrencyCode of #{i} transaction is empty or has bad format.");
                         isSucceed = false;
                     }
                 }

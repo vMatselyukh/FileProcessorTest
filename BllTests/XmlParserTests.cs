@@ -46,18 +46,15 @@ namespace BllTests
                 "</Transaction>" +
             "</Transactions>";
 
-            _serviceProviderMock.Setup(provider => provider.GetService(typeof(ErrorMessageHelper)))
-                .Returns(new ErrorMessageHelper());
+            _serviceProviderMock.Setup(provider => provider.GetService(typeof(MessageBuilder)))
+                .Returns(new MessageBuilder());
 
             var xmlParser = new XmlParser(_serviceProviderMock.Object, _automapper);
 
-            using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
-            {
-                var parseResult = xmlParser.ParseFile(stream);
+            var parseResult = xmlParser.ParseFile(fileContent);
 
-                Assert.IsTrue(parseResult.IsSucceed);
-                Assert.AreEqual(2, parseResult.TransactionList.Count);
-            }
+            Assert.IsTrue(parseResult.IsSucceed);
+            Assert.AreEqual(2, parseResult.TransactionList.Count);
         }
 
         [Test]
@@ -81,18 +78,15 @@ namespace BllTests
                 "</Transaction>" +
             "</Transactions>";
 
-            _serviceProviderMock.Setup(provider => provider.GetService(typeof(ErrorMessageHelper)))
-                .Returns(new ErrorMessageHelper());
+            _serviceProviderMock.Setup(provider => provider.GetService(typeof(MessageBuilder)))
+                .Returns(new MessageBuilder());
 
             var xmlParser = new XmlParser(_serviceProviderMock.Object, _automapper);
 
-            using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
-            {
-                var parseResult = xmlParser.ParseFile(stream);
+            var parseResult = xmlParser.ParseFile(fileContent);
 
-                Assert.IsFalse(parseResult.IsSucceed);
-                Assert.Zero(parseResult.TransactionList.Count);
-            }
+            Assert.IsFalse(parseResult.IsSucceed);
+            Assert.Zero(parseResult.TransactionList.Count);
         }
     }
 }

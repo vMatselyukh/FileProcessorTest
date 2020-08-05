@@ -4,5 +4,6 @@
     {
         public bool SkipHeader { get; set; }
         public string Delimiter { get; set; }
+        public string[] NewLineSeparators { get; set; }
     }
 }

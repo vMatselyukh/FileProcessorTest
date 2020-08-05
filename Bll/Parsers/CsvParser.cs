@@ -28,7 +28,7 @@ namespace Bll.Parsers
             _mapper = mapper;
             _serviceProvider = serviceProvider;
         }
-        public FileParseResult ParseFile(Stream stream)
+        public FileParseResult ParseFile(string content)
         {
             bool isSucceed = true;
             string errorMessage = string.Empty;
@@ -38,21 +38,21 @@ namespace Bll.Parsers
             var csvMapper = new CsvTransactionMapping();
             var csvParser = new CsvParser<CsvTransaction>(csvParserOptions, csvMapper);
 
-            var tinyParserResult = csvParser.ReadFromStream(stream, Encoding.UTF8).ToList();
+            var tinyParserResult = csvParser.ReadFromString(new CsvReaderOptions(_csvOptions.NewLineSeparators), content).ToList();
 
             if (tinyParserResult.Any(row => !row.IsValid))
             {
                 isSucceed = false;
 
-                var errorHelper = (ErrorMessageHelper)_serviceProvider.GetService(typeof(ErrorMessageHelper));
+                var messageBuilder = new MessageBuilder();
 
                 foreach (var failureRow in tinyParserResult.Where(row => !row.IsValid))
                 {
-                    errorHelper.AppendErrorMessage($"Error in Row: {failureRow.Error.ColumnIndex}. " +
+                    messageBuilder.AppendMessage($"Error in Row: {failureRow.Error.ColumnIndex}. " +
                         $"Unmapped Row: {failureRow.Error.UnmappedRow}. Error Message: {failureRow.Error.Value}.");
                 }
 
-                errorMessage = errorHelper.GetErrorMessage();
+                errorMessage = messageBuilder.GetMessage();
             }
             else
             {

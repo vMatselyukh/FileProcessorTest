@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Welcome to FileProcessor!</h1>
+
+<p>Use input field to upload your file or just drop the file to the window.</p>
+
+<form id="FileUploadForm" action="api/fileuploader/uploadfile" method="post" enctype="multipart/form-data">
+    <input type="file" name="File" />
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+

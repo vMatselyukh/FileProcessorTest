@@ -27,7 +27,8 @@ namespace BllTests
             _csvOptionsMock.Setup(csv => csv.Value).Returns(new CsvOptions
             {
                 Delimiter = ",",
-                SkipHeader = false
+                SkipHeader = false,
+                NewLineSeparators = new[] { "\n" }
             });
 
             var transactionProfile = new TransactionProfile();
@@ -41,15 +42,12 @@ namespace BllTests
             var fileContent = "Invoice0000001, \"1,000.00\", USD, 20/02/2019 12:33:16, Approved\n" +
                                    "Invoice0000002, 300.00, USD, 21/02/2019 02:04:59, Failed";
 
-            using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
-            {
-                var csvParser = new CsvParser(_csvOptionsMock.Object, _automapper, _serviceProviderMock.Object);
-                var parseResult = csvParser.ParseFile(stream);
+            var csvParser = new CsvParser(_csvOptionsMock.Object, _automapper, _serviceProviderMock.Object);
+            var parseResult = csvParser.ParseFile(fileContent);
 
-                Assert.IsTrue(parseResult.IsSucceed);
-                Assert.IsEmpty(parseResult.ErrorMessage);
-                Assert.AreEqual(2, parseResult.TransactionList.Count);
-            }
+            Assert.IsTrue(parseResult.IsSucceed);
+            Assert.IsEmpty(parseResult.ErrorMessage);
+            Assert.AreEqual(2, parseResult.TransactionList.Count);
         }
 
         [Test]
@@ -58,15 +56,12 @@ namespace BllTests
             var fileContent = "Invoice0000001, USD, 20/02/2019 12:33:16, Approved\n" +
                                    "Invoice0000002, 300.00, USD, 21/02/2019 02:04:59, Failed";
 
-            _serviceProviderMock.Setup(provider => provider.GetService(typeof(ErrorMessageHelper)))
-                .Returns(new ErrorMessageHelper());
+            _serviceProviderMock.Setup(provider => provider.GetService(typeof(MessageBuilder)))
+                .Returns(new MessageBuilder());
 
-            using (var stream = StreamHelper.GenerateStreamFromString(fileContent))
-            {
-                var csvParser = new CsvParser(_csvOptionsMock.Object, _automapper, _serviceProviderMock.Object);
-                csvParser.ParseFile(stream);
-                Assert.Pass();
-            }
+            var csvParser = new CsvParser(_csvOptionsMock.Object, _automapper, _serviceProviderMock.Object);
+            csvParser.ParseFile(fileContent);
+            Assert.Pass();
         }
     }
 }

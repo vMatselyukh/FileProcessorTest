@@ -8,22 +8,22 @@ namespace Bll.Helpers
     /// Don't reused old instance because of accumulation of error
     /// messages
     /// </summary>
-    public class ErrorMessageHelper : IErrorMessageHelper
+    public class MessageBuilder : IMessageBuilder
     {
         private StringBuilder _stringBuilder;
 
-        public ErrorMessageHelper()
+        public MessageBuilder()
         {
             _stringBuilder = new StringBuilder();
         }
 
-        public void AppendErrorMessage(string message)
+        public void AppendMessage(string message)
         {
             _stringBuilder.Append(message);
             _stringBuilder.AppendLine();
         }
 
-        public string GetErrorMessage()
+        public string GetMessage()
         {
             return _stringBuilder.ToString();
         }

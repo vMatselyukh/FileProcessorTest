@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Domain.Interfaces;
-using Domain.Interfaces.Repositories;
+using Domain.Interfaces.Services;
 using Domain.Interfaces.Validators;
 using Domain.Models;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace Bll.Managers
@@ -15,18 +14,18 @@ namespace Bll.Managers
         private readonly IFileParserFactory _fileParserFactory;
         private readonly ITransactionValidator _transactionValidator;
         private readonly ILogger<FileManager> _logger;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITransactionService _transactionService;
         private readonly IMapper _automapper;
         public FileManager(IFileParserFactory fileParserFactory, ILogger<FileManager> logger,
-            ITransactionValidator transactionValidator, IUnitOfWork unitOfWork, IMapper automapper)
+            ITransactionValidator transactionValidator, ITransactionService transactionService, IMapper automapper)
         {
             _fileParserFactory = fileParserFactory;
             _logger = logger;
             _transactionValidator = transactionValidator;
-            _unitOfWork = unitOfWork;
+            _transactionService = transactionService;
             _automapper = automapper;
         }
-        public async Task<FileProcessResult> ProcessFileAsync(Stream content, string fileExtension)
+        public async Task<FileProcessResult> ProcessFileAsync(string content, string fileExtension)
         {
             var parser = _fileParserFactory.GetParser(fileExtension);
             var parseResult = parser.ParseFile(content);
@@ -53,7 +52,7 @@ namespace Bll.Managers
                 };
             }
 
-            await _unitOfWork.TransactionRepository.InsertListAsync(
+            await _transactionService.InsertListAsync(
                 _automapper.Map<List<EfContext.Transaction>>(parseResult.TransactionList));
 
             return new FileProcessResult
